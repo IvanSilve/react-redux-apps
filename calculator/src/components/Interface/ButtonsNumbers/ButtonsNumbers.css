@@ -1,0 +1,8 @@
+.ButtonsNumbers {
+    width: 219px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.ButtonsNumbers button:last-child {
+    margin-left: 73px;
+}
