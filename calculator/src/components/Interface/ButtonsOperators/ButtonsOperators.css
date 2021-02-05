@@ -1,0 +1,16 @@
+.ButtonsOperators {
+    width: 73px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+#Button_clear {
+    position: absolute;
+    left: 0;
+    top: 269px;
+}
+#Button_subtract {
+    position: absolute;
+    top: 269px;
+    left: 146px;
+}

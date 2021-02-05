@@ -1,0 +1,13 @@
+.Interface {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+.Interface button {
+    width: 73px;
+    height: 73px;
+    background-color: cadetblue;
+    border: 1px solid #363636;
+    font-family: sans-serif;
+    font-size: 22px;
+}
