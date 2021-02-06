@@ -1,4 +1,4 @@
-import {PLUS, CLEAR, DIVIDE, SUBTRACT, EQUAL, MULTIPLY, UPDATECURRENTVALUE, CLICKNUMBERBUTTON} from '../constants/actionTypes';
+import {PLUS, CLEAR, DIVIDE, SUBTRACT, EQUAL, MULTIPLY, UPDATECURRENTVALUE, CLICKNUMBERBUTTON, BACKSPACECURRENTVALUE} from '../constants/actionTypes';
 
 export function rootReducer (state, action) {
     switch (action.type) {
@@ -7,7 +7,15 @@ export function rootReducer (state, action) {
                 currentValue: Number(String(state.currentValue) + action.value),
                 previousValue: state.previousValue,
                 operator: state.operator,
-                 changePreviousValue: true
+                changePreviousValue: true
+            }
+        }
+        case BACKSPACECURRENTVALUE: {
+            return {
+                currentValue: deleteLastChar(),
+                previousValue: state.previousValue,
+                operator: state.operator,
+                changePreviousValue: true
             }
         }
         case CLICKNUMBERBUTTON: {
@@ -69,6 +77,12 @@ export function rootReducer (state, action) {
         default: {
             return state;
         }
+    }
+
+    function deleteLastChar() {
+        let result = String(state.currentValue).split('');
+        result.pop();
+        return Number(result.join(''));
     }
 
     function updatePreviousValueEqual () {
