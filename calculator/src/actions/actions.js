@@ -1,4 +1,4 @@
-import {PLUS, CLEAR, DIVIDE, SUBTRACT, EQUAL, MULTIPLY, UPDATECURRENTVALUE, CLICKNUMBERBUTTON} from '../constants/actionTypes';
+import {PLUS, CLEAR, DIVIDE, SUBTRACT, EQUAL, MULTIPLY, UPDATECURRENTVALUE, CLICKNUMBERBUTTON, BACKSPACECURRENTVALUE} from '../constants/actionTypes';
 
 export function plus() {
     return {
@@ -31,6 +31,11 @@ export function multiply() {
     }
 }
 export function updateCurrentValue(event) {
+    if(event.inputType === "deleteContentBackward") {
+        return {
+            type: BACKSPACECURRENTVALUE
+        }
+    }
     return {
         type: UPDATECURRENTVALUE,
         value: event.data

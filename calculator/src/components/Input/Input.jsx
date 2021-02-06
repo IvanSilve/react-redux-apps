@@ -13,13 +13,11 @@ export class Input extends React.Component {
         store.subscribe(() => {
             let state = store.getState();
             this.inputRef.current.value= state.currentValue;
-            console.log('current value: ' + state.currentValue)
-            console.log('previous value: ' + state.previousValue)
         })
-        //let state = store.getState();
     }
     componentDidMount() {
         this.sub();
+        store.dispatch({type: "__INIT__"})
     }
     render() {
         return (
