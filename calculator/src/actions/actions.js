@@ -1,4 +1,4 @@
-import {PLUS, CLEAR, DIVIDE, SUBTRACT, EQUAL, MULTIPLY, UPDATECURRENTVALUE, CLICKNUMBERBUTTON, BACKSPACECURRENTVALUE} from '../constants/actionTypes';
+import {PLUS, CLEAR, DIVIDE, SUBTRACT, EQUAL, MULTIPLY, UPDATECURRENTVALUE, CLICKNUMBERBUTTON, BACKSPACECURRENTVALUE, ADDDOT} from '../constants/actionTypes';
 
 export function plus() {
     return {
@@ -31,9 +31,29 @@ export function multiply() {
     }
 }
 export function updateCurrentValue(event) {
+    if(event.data === '.') {
+        return {
+            type: ADDDOT,
+            value: event.data
+        }
+    }
     if(event.inputType === "deleteContentBackward") {
         return {
             type: BACKSPACECURRENTVALUE
+        }
+    }
+    if( event.data !== '1' &&
+        event.data !== '2' &&
+        event.data !== '3' &&
+        event.data !== '4' &&
+        event.data !== '5' &&
+        event.data !== '6' &&
+        event.data !== '7' &&
+        event.data !== '8' &&
+        event.data !== '9' &&
+        event.data !== '0' ) {
+            return {
+                type: 'NOTANUMBER'
         }
     }
     return {
@@ -42,7 +62,6 @@ export function updateCurrentValue(event) {
     }
 }
 export function clickNumberButton(event) {
-    console.log(event.data)
     return {
         type: CLICKNUMBERBUTTON,
         value: event.path[0].innerText

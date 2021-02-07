@@ -1,4 +1,4 @@
-import {PLUS, CLEAR, DIVIDE, SUBTRACT, EQUAL, MULTIPLY, UPDATECURRENTVALUE, CLICKNUMBERBUTTON, BACKSPACECURRENTVALUE} from '../constants/actionTypes';
+import {PLUS, CLEAR, DIVIDE, SUBTRACT, EQUAL, MULTIPLY, UPDATECURRENTVALUE, CLICKNUMBERBUTTON, BACKSPACECURRENTVALUE, ADDDOT} from '../constants/actionTypes';
 
 export function rootReducer (state, action) {
     switch (action.type) {
@@ -9,6 +9,15 @@ export function rootReducer (state, action) {
                 operator: state.operator,
                 changePreviousValue: true
             }
+        }
+        case ADDDOT: {
+            return {
+                currentValue: addDot(),
+                previousValue: state.previousValue,
+                operator: state.operator,
+                changePreviousValue: true
+            }
+
         }
         case BACKSPACECURRENTVALUE: {
             return {
@@ -82,7 +91,7 @@ export function rootReducer (state, action) {
     function deleteLastChar() {
         let result = String(state.currentValue).split('');
         result.pop();
-        return Number(result.join(''));
+        return result.join('');
     }
 
     function updatePreviousValueEqual () {
@@ -97,28 +106,34 @@ export function rootReducer (state, action) {
         }
         else return state.previousValue;
     }
+    function addDot() {
+        if(String(state.currentValue).includes('.')){
+            return state.currentValue
+        }
+        return String(state.currentValue) + action.value
+    }
 
     function calculate () {
         switch(state.operator) {
-            case PLUS: return state.previousValue + state.currentValue;
+            case PLUS: return Number(state.previousValue) + Number(state.currentValue);
             case SUBTRACT: {
                 if (state.changePreviousValue) {
-                    return state.previousValue - state.currentValue;
+                    return Number(state.previousValue) - Number(state.currentValue);
                 }
-                return state.currentValue - state.previousValue;
+                return Number(state.currentValue) - Number(state.previousValue);
             }
             case MULTIPLY: {
                 if(state.currentValue) {
-                    return state.previousValue * state.currentValue;
+                    return Number(state.previousValue) * Number(state.currentValue);
                 }
                 return state.currentValue
             }
             case DIVIDE: {
                 if(state.currentValue) {
                     if (state.changePreviousValue) {
-                        return state.previousValue / state.currentValue;
+                        return Number(state.previousValue) / Number(state.currentValue);
                     }
-                    return state.currentValue / state.previousValue;
+                    return Number(state.currentValue) / Number(state.previousValue);
                 }
                 return state.currentValue
             }

@@ -12,7 +12,7 @@ export class Input extends React.Component {
     sub () {
         store.subscribe(() => {
             let state = store.getState();
-            this.inputRef.current.value= state.currentValue;
+            this.inputRef.current.value = state.currentValue;
         })
     }
     componentDidMount() {
@@ -22,7 +22,7 @@ export class Input extends React.Component {
     render() {
         return (
             <div className="Input">
-                <input type="number"
+                <input type="text"
                        ref ={this.inputRef}
                        onChange = {() => store.dispatch(updateCurrentValue(event))}
                 />
