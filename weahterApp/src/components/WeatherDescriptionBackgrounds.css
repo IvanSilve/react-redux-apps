@@ -1,0 +1,43 @@
+.weatherBackground{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+.снег{
+    background-image: url("../assets/snow.png");
+}
+.ясно:after{
+    content: '';
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    right: calc(50% - 165px);
+    top: 170px;
+    background-image: url("../assets/sun.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -2;
+}
+.облачно:after, .пасмурно:after, .облачность:after{
+    content: '';
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    right: calc(50% - 165px);
+    top: 170px;
+    background-image: url("../assets/clouds.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -2;
+ }
+.дождь{
+      background-image: url("../assets/rain.png");
+  }

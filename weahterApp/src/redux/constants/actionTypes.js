@@ -1,0 +1,2 @@
+export const GETWEATHER = "GETWEATHER";
+export const CITYNOTFOUND = "CITYNOTFOUND";
