@@ -4,7 +4,7 @@ export function rootReducer (state, action) {
     switch (action.type) {
         case UPDATECURRENTVALUE: {
              return {
-                currentValue: Number(String(state.currentValue) + action.value),
+                currentValue: updateCurrentValue(),
                 previousValue: state.previousValue,
                 operator: state.operator,
                 changePreviousValue: true
@@ -139,5 +139,13 @@ export function rootReducer (state, action) {
             }
             default: return state.currentValue
         }
+    }
+    function updateCurrentValue() {
+        if(String(state.currentValue).includes('.')){
+            return String(state.currentValue) + action.value
+        } else {
+            return Number(String(state.currentValue) + action.value)
+        }
+
     }
 }
