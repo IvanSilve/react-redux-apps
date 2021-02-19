@@ -4,7 +4,7 @@
 
 Simple calculator with graphic interface.
 
-You can write numbers in input from your keyboard. And you can make several pushes on the button equal. And it's work well. But there are still some bugs, such as you can't write zero after dot.
+You can write numbers in input from your keyboard. And you can make several pushes on the button equal.
 
 ## -   Weather app made with React, Redux, react-redux
 
