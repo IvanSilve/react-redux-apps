@@ -1,5 +1,5 @@
 const React = require ('react');
-import {updateCurrentValue} from '../../actions/actions.js';
+import {updateCurrentValue, pressEnter} from '../../actions/actions.js';
 import {store} from '../../Store/Store.js';
 require ('./Input.css');
 
@@ -12,7 +12,8 @@ export class Input extends React.Component {
     sub () {
         store.subscribe(() => {
             let state = store.getState();
-            this.inputRef.current.value = state.currentValue;
+            this.inputRef.value = state.currentValue;
+            this.inputRef.focus();
         })
     }
     componentDidMount() {
@@ -23,8 +24,9 @@ export class Input extends React.Component {
         return (
             <div className="Input">
                 <input type="text"
-                       ref ={this.inputRef}
+                       ref ={input => {this.inputRef = input}}
                        onChange = {() => store.dispatch(updateCurrentValue(event))}
+                       onKeyPress={() => store.dispatch(pressEnter(event))}
                 />
             </div>
         )

@@ -42,6 +42,26 @@ export function updateCurrentValue(event) {
             type: BACKSPACECURRENTVALUE
         }
     }
+    if(event.data === "+"){
+        return {
+            type: PLUS
+        }
+    }
+    if(event.data === "-"){
+        return {
+            type: SUBTRACT
+        }
+    }
+    if(event.data === "*"){
+        return {
+            type: MULTIPLY
+        }
+    }
+    if(event.data === "/"){
+        return {
+            type: DIVIDE
+        }
+    }
     if( event.data !== '1' &&
         event.data !== '2' &&
         event.data !== '3' &&
@@ -59,6 +79,17 @@ export function updateCurrentValue(event) {
     return {
         type: UPDATECURRENTVALUE,
         value: event.data
+    }
+}
+export function pressEnter(event) {
+    if(event.key === "Enter"){
+        return {
+            type: EQUAL
+        }
+    } else {
+        return {
+            type: 'NOONE'
+        }
     }
 }
 export function clickNumberButton(event) {

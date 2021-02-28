@@ -1,0 +1,14 @@
+.operations{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+
+    color: #82c4c1;
+    font-size: 1.4rem;
+    width: 100%;
+    margin-top: 10px;
+}
+.operations li{
+    list-style-type: none;
+    text-align: end;
+}
